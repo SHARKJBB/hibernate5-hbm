@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="tedu.sharkj.pojo">
+    <class name="Special" table="t_special">
+        <id name="id">
+            <generator class="native"></generator>
+        </id>
+        <!-- 配置属性和数据字段的对应关系,默认都是字符串类型 -->
+        <property name="name" column="name"/>
+        <property name="type" column="type"/>
+        <set name="classRooms" inverse="true" lazy="extra">
+            <!--表示在另一端的键名-->
+            <key column="sid"></key>
+            <!--关联对象的类型-->
+            <one-to-many class="ClassRoom"/>
+        </set>
+    </class>
+</hibernate-mapping>
+
